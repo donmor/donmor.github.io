@@ -161,7 +161,13 @@ Error message and password prompt
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/more-tiddler-actions</li>
 
+<li>$:/ControlPanel</li>
+
 <li>$:/core</li>
+
+<li>$:/core/ui/Buttons/save-wiki</li>
+
+<li>$:/core/ui/SideBar/Recent</li>
 
 <li>$:/DefaultTiddlers</li>
 
@@ -203,6 +209,8 @@ Error message and password prompt
 
 <li>$:/styles/noborder.css</li>
 
+<li>$:/tags/SideBar</li>
+
 <li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
@@ -223,9 +231,13 @@ Error message and password prompt
 
 <li>Alipay Donation</li>
 
-<li>btn-index.png</li>
+<li>Hyperpad</li>
 
 <li>Summary</li>
+
+<li>Tiddloid</li>
+
+<li>Tiddloid Lite</li>
 
 </ul>
 </p>
@@ -264,8 +276,14 @@ Error message and password prompt
 <div created="20191121000121896" modified="20210327151108562" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit">
 <pre>hide</pre>
 </div>
-<div created="20191121000121015" modified="20191121000134693" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/more-tiddler-actions">
+<div created="20191121000121015" modified="20210328031558977" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/more-tiddler-actions">
 <pre>hide</pre>
+</div>
+<div color="#bbb" created="20210328014851023" icon="$:/core/images/options-button" modified="20210328014851023" title="$:/ControlPanel">
+<pre>&lt;div class=&quot;tc-control-panel&quot;&gt;
+&lt;&lt;tabs &quot;[all[shadows+tiddlers]tag[$:/tags/ControlPanel]!has[draft.of]]&quot; &quot;$:/core/ui/ControlPanel/Info&quot;&gt;&gt;
+&lt;/div&gt;
+</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.21">
 <pre>{
@@ -9460,24 +9478,45 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div caption="{{$:/core/images/save-button}} {{$:/language/Buttons/SaveWiki/Caption}}" created="20210328015007875" description="{{$:/language/Buttons/SaveWiki/Hint}}" modified="20210328015007875" tags="$:/tags/PageControls" title="$:/core/ui/Buttons/save-wiki">
+<pre>&lt;$button tooltip={{$:/language/Buttons/SaveWiki/Hint}} aria-label={{$:/language/Buttons/SaveWiki/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
+&lt;$wikify name=&quot;site-title&quot; text={{$:/config/SaveWikiButton/Filename}}&gt;
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; $param={{$:/config/SaveWikiButton/Template}} filename=&lt;&lt;site-title&gt;&gt;/&gt;
+&lt;/$wikify&gt;
+&lt;span class=&quot;tc-dirty-indicator&quot;&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
+{{$:/core/images/save-button}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
+&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text={{$:/language/Buttons/SaveWiki/Caption}}/&gt;&lt;/span&gt;
+&lt;/$list&gt;
+&lt;/span&gt;
+&lt;/$button&gt;</pre>
+</div>
+<div caption="{{$:/language/SideBar/Recent/Caption}}" created="20210328014811446" modified="20210328014811446" title="$:/core/ui/SideBar/Recent">
+<pre>&lt;$macrocall $name=&quot;timeline&quot; format={{$:/language/RecentChanges/DateFormat}}/&gt;
+</pre>
+</div>
 <div created="20191120235637827" modified="20191120235643542" title="$:/DefaultTiddlers">
 <pre>Summary
 </pre>
 </div>
-<div caption="Featured" created="20191121000419980" list-after="$:/core/ui/SideBar/Open" modified="20210327145954164" tags="$:/tags/SideBar" title="$:/Featured">
+<div caption="Featured" created="20191121000419980" list-after="$:/core/ui/SideBar/Open" modified="20210328031122614" tags="$:/tags/SideBar" title="$:/Featured">
 <pre>!! Coding
-[[Tiddloid|https://github.com/donmor/Tiddloid]]
+[[Tiddloid]]
 
-[[Tiddloid Lite|https://github.com/donmor/TiddloidLite]]
+[[Tiddloid Lite]]
 
-[[Hyperpad|https://github.com/donmor/Hyperpad]]
+[[Hyperpad]]
 
-!! Video - [[Bilibili|https://space.bilibili.com/19359846]]
+!! Video
 
-!! Donation
+[[Bilibili|https://space.bilibili.com/19359846]] - Animations, game-play, music and more
+
+!! Support us
 
 &lt;table class=&quot;noborder&quot;&gt;
-&lt;tr&gt;&lt;td class=&quot;noborder&quot;&gt;&lt;a href=&quot;https://liberapay.com/donmor3000/donate&quot;&gt;&lt;img alt=&quot;Donate using Liberapay&quot; src=&quot;https://liberapay.com/assets/widgets/donate.svg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class=&quot;noborder&quot;&gt;&lt;$link to=&quot;Alipay Donation&quot;&gt;[img[btn-index.png]]&lt;/$link&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;noborder&quot;&gt;&lt;a href=&quot;https://liberapay.com/donmor3000/donate&quot;&gt;&lt;img alt=&quot;Donate using Liberapay&quot; src=&quot;https://liberapay.com/assets/widgets/donate.svg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;td class=&quot;noborder&quot;&gt;&lt;$link to=&quot;Alipay Donation&quot;&gt;&lt;img alt=&quot;Donate using Alipay&quot; src=&quot;https://img.alipay.com/sys/personalprod/style/mc/btn-index.png&quot;&gt;&lt;/$link&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;</pre>
 </div>
 <div status="complete" title="$:/Import">
@@ -9503,13 +9542,13 @@ Error message and password prompt
 <div created="20210327145646409" modified="20210327145646409" title="$:/state/folded/Summary">
 <pre>show</pre>
 </div>
-<div created="20210326044222510" modified="20210327145752307" title="$:/state/plugin-info-334910430-$:/core---1812962263">
-<pre>contents</pre>
+<div created="20210326044222510" modified="20210328015020651" title="$:/state/plugin-info-334910430-$:/core---1812962263">
+<pre>readme</pre>
 </div>
 <div created="20191120235414163" modified="20191121001332325" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20191120235809120" modified="20210327151110195" title="$:/state/tab--1963855381">
+<div created="20191120235809120" modified="20210328031559948" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
 <div created="20191120235740658" modified="20191120235740658" title="$:/state/tab--2112689675">
@@ -9521,22 +9560,25 @@ Error message and password prompt
 <div created="20191120235556474" modified="20191202065003465" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20191120235409121" modified="20210327145931345" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20191120235409121" modified="20210328031550078" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20191120235306030" modified="20210327151053005" title="$:/state/tab/sidebar--595412856">
+<div created="20191120235306030" modified="20210328031611961" title="$:/state/tab/sidebar--595412856">
 <pre>$:/Featured</pre>
 </div>
 <div created="20191121000135483" modified="20210326044536803" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/ViewToolbar</pre>
 </div>
-<div created="20210327151048194" list="[[Alipay Donation]] Summary" modified="20210327151054489" title="$:/StoryList">
+<div created="20210328015201567" list="$:/core/ui/Buttons/save-wiki $:/Featured Summary" modified="20210328031609819" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210326042354349" modified="20210326043626105" tags="$:/tags/Stylesheet" title="$:/styles/noborder.css" type="text/css">
 <pre>.noborder {
   border: 0;
 }</pre>
+</div>
+<div created="20210328015112572" list="$:/Featured $:/core/ui/SideBar/Open $:/core/ui/SideBar/Tools $:/core/ui/SideBar/More" modified="20210328015129639" title="$:/tags/SideBar">
+<pre></pre>
 </div>
 <div created="20210326044200063" modified="20210326044439366" title="$:/temp/advancedsearch">
 <pre>$:/core/ui/Buttons/save-wiki</pre>
@@ -9599,7 +9641,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210326044157182" modified="20210326045151049" title="$:/temp/search">
+<div created="20210326044157182" modified="20210328031525908" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20191120235752522" modified="20191120235807908" title="$:/theme">
@@ -9730,11 +9772,39 @@ Error message and password prompt
 
 如果您愿意，请扫描或点击此二维码来赞助我们。</pre>
 </div>
-<div title="btn-index.png" type="image/png">
-<pre>iVBORw0KGgoAAAANSUhEUgAAAJ8AAAAlCAMAAABrlMvBAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMAUExUReq8f//EWeyKUPSpQN28qux9AISEhPJ6AP96AO2DRHWXxPukJv+BAOWjffL09dbY2ullAP+VANze4u7w8v+jAP+kAP+eAP+cALHE3P+aANqZQP+FAP99AHp6euLDsu6DAP+KAEZ3t+3Yv/v27+Wph/Hz9PPjz/+RAOfLsd7g5eWZQNyzf9vDtrnL4btqAOKylubGn+mYaPSMEM6cYPHav/P19piZm/SFAMt7I8hnANRsANnKwv+0WfG6ffOLAMeBYZOdtf+oWeGkYPHBf/+8Wf+NAPXWr9uNMOHk6fe7YNZ2ENpxAOqQW/HMn/h9ADdssdnS0MrX6OeddNeWUOJ1ANt7AKq917u6vOeukNNwAPJ2LYGizZKTlfvjv/p1AMdyAOLUzeeCAOnBj/9/APmcENeQQJdhVPGVIMZzEPBrAP2jUvbs3/rJf/Xev+bs8+elUPbRn+K6j+R+AMrKy/j4+fB6UPLcv+p3APmJAOijQNV4AP+uWfWAAN5aAOuBEPHZzO2IAPnfv96rcJ231+G4oGOMwuHc2/nt32pbbuC2f+mNINieYPqRAONfAPJ/O9qvf/mEAOWYMPLBpeHJvtuBEM2PQPVwALi7yevQr+FnEqOkpdnj7vaRAOW5f9CTQPLy8vjHf++OIH6fy/GeQPt/APuUAPDi2viNANeqcOm3f/uvQPGgcBtYp9yfUPKwin+IpP///wxNovNvIf+hAPv7/P39/vz9/fr6+/z8/NLS0/7+/tPT1Nvd4NPU1drb3/n5+vX3+Pf4+Nja3dTV1+Dj59XW2NbPzNfQzfFZIidgq4BeYu6xYN/Z2fKQVuVtKf14AMhpOd7Y1/+pDvCaMP+rEtPa49Pd6u/Gj/7w5PDBsd+JWvGkUPSrUJGt0+np6f1+DK6eopCQklRYeuSycP+EE5WWl/SyUL2pqP+8UNra2+yFYMmflPrl0f/p1WJifzZbluTNwouLjNbg61JmkrhzafvEcOHn7uaNMPKHSfGFMfB8Odvb3LhuTf55AMXP3ai1zHeBUHUAAAlZSURBVHjaYthgGj7LjCLAQSvwxPHGBoAAYhCeVcy3gSLwl5FG4AX3k7cAAcQQvnPDLsrAeUZR2oArjNxZAAHEYLZ9K4WAZu4TvcR4HyCAGJ5u2EYhOM8oQiOwmfE8QAAB3beDQhDHuJlWDmSMAwggoPu2UAiA7qMVYIwDCCCGmA3bKQRxjGK0AoxxAAEEdN9+BNh+cqMijBm4cWMzkL67cWM0VGjNxo37MUEJTd0HEEBA95UggY0bFWHM1o0bZwOpaKD7SoBuVYwGsjYqgsDsEhQQ5yJOK/e5xAEEEMPDDQdBoKQZbPXGjWvAdOABiY0bW0ESYPfpbtzoHw0BXBs36h5EBgeA7qMVYJwGEEBA9x0Ag9m6IAB0B5jOCwRGJtC1EKAIFI+GKAO5W/cACpjmIgkHKTlfuSWJACk5qyAM7pwcCCM2llscxAWRcOAyDSCAgO4zRQJAt4DpZpCzmnWnh+sCo7k1UHcjElA0RQXI7nu2YYPnUgjTMxYBPAVBIjmxboIQuaWeG3algFnMGzbMAbpqwYINGwoW5HAv2FCwFMV9AAGE5D4kJ3xqbQYGnm591KZJoPhFKDDFAqa5CEoKCgpyr1q1irlgw4b8VWDA7YxURTsvBSpJ2bphAzNIqaTgnNwNvg0g1tLKDRsaljLD1FXmbrjODNQsCFEm6DINIICA7uODAl0ICAOmQSAP6L7pUZs2bVq/ceMiqAKg+/gwgSrQfUCwdAFKo2GXc2WntrZ29oZsINlZOQeowHmD8ga3HpBaQeYNu6ScF4CAL9DxCy5LzZu3YcOKeVJToLrnCEKAyzSAAGL4uEEVFQCjthVIIbsPyOUCZx5Q/uVCU6+aCXbfcgbUVg1DUVVVVbzJBqX4qqrQBqCFy9s3GOzakA5S25O7YUMVktpKBoa5uzYYMJzO36WspGQCDFKY+zIBAgjqvmWr+zZFnV23TFX128mNG69B3AeO30UQ9/0DZ56NutO/vMZwn42guqCgHcMGJT04ALqvYY7dnESTDWWJy+2W96irC57esC1DbYNzj7qgOjA+d1WVKYGA2oYNSkoToe4sc9uwIj5+6ga1BqAiEHTJBAggoPuEhYXro87Zr1v9Y9Oms5OA5UcrUEQY5D7hZfXCIPcJQwDQfcKlJ07cFEYFIPepqwPdZxJ62pkBBE8DA4fBDijYULahrEEdDJbnbphRtWKDsh2YuWFDaFU8CEzdsEGvKhQYv1OnTp0ntWvD2tzrjzcYQPWo22QCBBDEfX0X/oNsql+9adO5tHffoO6TANGY7ovAcJ861H2JjZBwaCyCuc9kgwnUrvQNG9YmAtPX6R5XUHbYlWjk9iaxQV4K6FK7hutlIJCbZNG0dkPuWpO1dnD3AQQQw8ddHh4emz57QIBDGjDJRRm2tHkA3RcGEgGGJxdUEug+j7ZXQXItKkxRKh5wAHSfq6urOdB9RWUbspWUsjeUhe7awGAOFJUv22AiD5J1rSjYlR1aUWSwIbdi+cRd2Rs2JKYrbyhwXa4FZLma50LjNzR07gaTqqqiClcIsMkECCAGtg1HjhzZtPHqERAAFibvDTeBwK8/pzqey304cgTkviNH2jTkNOROnUpjYgLLbvrRdgQGPARsXKHuCzXZ0B+vp72hDBS/5kBBeWD4yYNtMlLe0JnoKr92w4bLFUXZxhs2FIHYdyrA7jPSmgoGUunySRvai8xhznO1EQAIIIj7mDoU/x05EgYMM3+JIwmGUZsIAEOE844cEbBRAALzlWD3GWgtNgAGwa4NK82BgmD3gWQrTu/aoNbY2Fi2YYNvhbx7KtB95lUzdimnA93HqrAYXk7KA/PLQgU4sBEACCCg+zQ1Nc/cerTxJDDjnuTSBIEzLT54neijiQxQ3AcGJsDwQ3WfeTu8MFE2msAqBXKVvFe2EyvIfRVdSZ3AklJpRpJWF1CBbQWS+wACCOg+IRCY/PoBF1eYEAxoCk2OCGLqw3QaE5OPSsRFIWQgYCOtoCANcl8IzH3eQPfVAAVB7mMF0qAQMugHA6D9EyaAQ21CUaS3vNauDawTWFdu6FbaoKE8I8R3gxIwUKUVQCYCkY0AQADB3AcEbUJYwGQ5BLgohBUA3Qc0sGblBqUQk639wMLPMnIKyH1AUVZg+ccKlJzguyvbMhIELDV2tdeA3FcOFK2ZUJO/YRerdI3ahlSlDYVqu3w37LJQ2vXGCGQgCNkIAAQQA9uuPTAQsWdPS5TcZLk9pAGBamkgqAGFX6SlVYiW7Urb9l0bnIDuk2YFhR+QXrhhQ1NIDQiUB2/YcLsGGGrl0tITGgtAKsulF+7akKq2QduicMOGQisL5Q0gB4JBtQBAAAHDbx8EHJLbpL9vH5OcvuE+0gDYfTwg95Wzs9b4Ld4FTmVeCPfxTLCF8oHe8M7e5cYOCj9paT83kEqlcp66JmCBs6vJ22SXmld5SPeGdnYemPsAAggYfoegwJCJ6dAhJhYVJmsfnyimAH2mXy28TNYqhocCfIIMD/EaGuqzMPlE+RhGtRxCAb3VPEDgl6rtxA6kl4QAay2NfotykCC7laUVO0jM0rJ8CQ8YlFtZerN/VwK6iofdCZgmV3ix87B7ByspGXiVeylllC/x8+5OZYeo5anuBQggYPhBrbHm1N+kA3RfwKZDvEGHfHh5WwyZAqJYDK0P+QTpbNKPCrDepMPUwrIpgJcXm/tkyr1D/IB0MtBNlpZW5SA2zxL2cnaQu4CUH9TKJeVAdrkVyNl+IVZAAHR4Mrs3UAtIGKSNPSTED+4+gABikN3ADwG8wOAx5Gdi4d/Ez8vLH2QY5GPIxB8EFOLf1AKUZQLSLEwsLGBZFNBbnQxyl5+fnwzETSDX+CXz4AbJfuwgZ4ModrAmMGsJyAgwZ4kM3H0AAQQMv6NgwBKlc5R3UwsnL8sma15O3iiWKF4mpuPHN7Ho6Pj4HFfhjTqus4mFk1d/k7Whz/GjSOAw0H00AjLVvQABBAy/w2Cgw6JzmAUEdFiseQ1VrPeyqOjoHzvmc1jn2DFDJpW9LUw+LNZgWRaWY4eRQa+jDK2AYy9AAAHdtxcN7Lbm5GSBsHx+6ewlCGjqPoAAYmA7+HI3Gti5czcpoNZRhlYDlFkzAQKIYVbxht87KQK1jjQbP/3JBBBADPfYwikcP611pBHI+jnzDUAAMWyYP4tNliJQSysw0+fGBoAAAwA3ET5K1guMIAAAAABJRU5ErkJggg==</pre>
+<div created="20210328025047700" modified="20210328031106623" title="Hyperpad">
+<pre>[img[img/Hyperpad.png]]
+
+所以这个就是真·Demo了，按正常流程应该是学Java时第一个写的程序，然而却排在两个Tiddloid后面。同时这也是从立项到发布耗时最短的一次~~带着一堆的Bug~~。
+
+作为从立项就写轮眼Windows记事本的App，随着一次次更新，各种意义上和原版越来越像了。~~[img width=16 [img/Hyperpad.png]]：人家里面都是🗒姐姐大人的形状了♡~~
+
+项目地址：[[https://github.com/donmor/Hyperpad]]</pre>
 </div>
 <div created="20191120235601732" modified="20191122111135017" tags="" title="Summary">
 <pre>偶尔写写代码的咸鱼一枚</pre>
+</div>
+<div created="20210328020027357" modified="20210328030241809" title="Tiddloid">
+<pre>[img[img/Tiddloid.png]]
+
+为自己喜欢的~TiddlyWiki添砖加瓦有何不可？抱着这样的念头看了几篇Java教程，Tiddloid就这样诞生了。
+
+一开始的设计理念就是一个安卓版本的~TiddlyDesktop，文件放在本地，直接用`file://`读进`WebView`，保存的时候就用`FileOutputStream`，然后~TiddlyDesktop的备份功能也实现了，至于内置写轮眼浏览器则是心血来潮。因为缺少直观的文件选择器，还专门写了个~FileDialog库上传到仓库去~~然而现在都过渡到SAF了，刚出生就光速淘汰(;^q^;)~~
+
+项目地址：[[https://github.com/donmor/Tiddloid]]</pre>
+</div>
+<div created="20210328022326065" modified="20210328030319893" title="Tiddloid Lite">
+<pre>[img[img/Tiddloid.png]]
+
+某日用Tiddloid写完东西保存之后，连接着坚果云的~FolderSync抽风了。
+
+“这不就跟用~AndTidWiki的时候一样啊！摔！”~~&lt;br /&gt;至少App好看了不是~~
+
+遂查资料，见SAF（Storage Access Framework），惊为天人~~（原谅我语死早，这个词本是赞人的）~~，怒写十数个demo后决定重构Tiddloid。考虑到数据格式大改，加上自己使用某些功能的频率几乎为零，遂另起炉灶作Tiddloid Lite，只实现SAF和WebView，其他就通通砍掉了~~整块整块删掉代码的时候莫名爽到是闹哪样~~。
+
+下一步？也许是让Tiddloid也吃上SAF吧，想办法的话也许之前的数据还能保留兼容，不然就只能改包名为`top.donmor.tiddloid2`了。
+
+项目地址：[[https://github.com/donmor/TiddloidLite]]</pre>
 </div>
 
 </div>
